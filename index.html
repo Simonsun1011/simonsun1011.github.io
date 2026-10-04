@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hestia</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --panel: #111827;
+        --panel-soft: #1f2937;
+        --text: #e5e7eb;s
+        --muted: #94a3b8
+        --accent: #8b5cf6;
+        --accent-2: #22c55e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, var(--bg), #111827 55%, #1e293b);
+        color: var(--text);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+
+      .container {
+        width: min(900px, calc(100% - 32px));
+        background: rgba(17, 24, 39, 0.86);
+        border: 1px solid rgba(148, 163, 184, 0.15);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 32px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      nav {
+        display: flex;
+        gap: 20px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      nav a:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 32px;
+        padding: 48px 32px;
+      }
+
+      .hero-copy h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2.5rem, 4vw, 4.5rem);
+        line-height: 1.1;
+      }
+
+      .hero-copy p {
+        margin: 0 0 28px;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 999px;
+        padding: 14px 22px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .primary {
+        background: linear-gradient(135deg, var(--accent), #7c3aed);
+        color: white;
+      }
+
+      .secondary {
+        background: rgba(148, 163, 184, 0.08);
+        color: var(--text);
+        border: 1px solid rgba(148, 163, 184, 0.15);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .stat {
+        background: rgba(31, 41, 55, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 16px;
+        padding: 18px 16px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .card {
+        background: linear-gradient(180deg, rgba(139, 92, 246, 0.18), rgba(34, 197, 94, 0.05));
+        border: 1px solid rgba(139, 92, 246, 0.25);
+        border-radius: 24px;
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .mini-panel {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 16px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .mini-panel:last-child {
+        margin-bottom: 0;
+      }
+
+      .label {
+        display: inline-block;
+        color: var(--accent-2);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1.5rem;
+      }
+
+      .mini-panel p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      @media (max-width: 760px) {
+        header {
+          flex-direction: column;
+          gap: 18px;
+          align-items: flex-start;
+        }
+
+        nav {
+          flex-wrap: wrap;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <div class="brand">Hestia</div>
+        <nav aria-label="Main navigation">
+          <a href="#">Home</a>
+          <a href="#">Features</a>
+          <a href="#">Studio</a>
+          <a href="#">Pricing</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Build calmer digital experiences.</h1>
+          <p>
+            Hestia helps teams design, ship, and grow welcoming products with a
+            focused workflow, polished collaboration, and measurable momentum.
+          </p>
+
+          <div class="actions">
+            <button class="btn primary">Get started</button>
+            <button class="btn secondary">Watch demo</button>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>2.4x</strong>
+              <span>faster delivery</span>
+            </div>
+            <div class="stat">
+              <strong>98%</strong>
+              <span>team satisfaction</span>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>workflow visibility</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card" aria-label="Highlights panel">
+          <div class="mini-panel">
+            <span class="label">Launch</span>
+            <h2>Product clarity</h2>
+            <p>Turn scattered work into a single, confident roadmap.</p>
+          </div>
+
+          <div class="mini-panel">
+            <span class="label">Scale</span>
+            <h2>Team alignment</h2>
+            <p>Keep design, product, and engineering moving together.</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
